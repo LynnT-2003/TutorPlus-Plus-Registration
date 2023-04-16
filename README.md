@@ -44,3 +44,31 @@ As much as we'd like to implement some automation here and there, there is no ce
 **Server:** MongoDB, Node, Express / Next
 
 #### Note: We plan to either use the traditional MERN techstack (MongoDB, Express, React, Node) or use Next.js instead of Express for the backend
+
+## Note to Self (Local Deployment)
+
+To deploy this project locally run:
+
+Step 0: Update all API URLs to
+
+```bash
+  localhost:3000/api/tutorPlus/...
+```
+
+Step 1: Clone the repository
+
+```bash
+  git clone https://github.com/LynnT-2003/TutorPlus-Plus-Registration.git
+```
+
+Step 2: Install dependencies
+
+```bash
+  yarn install
+```
+
+Step 3: Start your local server
+
+```bash
+  yarn dev
+```
