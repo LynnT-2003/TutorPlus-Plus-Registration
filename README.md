@@ -31,20 +31,6 @@ The proposed solution involves three main parties: the admin, tutors, and studen
 
 As much as we'd like to implement some automation here and there, there is no certainty that this could be realistically achieved in the early stages of the project.
 
-## Authors (Group Members)
-
-- [[6411271] Lynn Thit Nyi Nyi](https://github.com/LynnT-2003)
-- [[6411325] Aung Cham Myae](https://github.com/u6411325)
-- [[6410381] Tanat Arora](https://github.com/Tanat04)
-
-## Tech Stack
-
-**Client:** React, Bootstrap, Chakra-UI
-
-**Server:** MongoDB, Node, Express / Next
-
-#### Note: We plan to either use the traditional MERN techstack (MongoDB, Express, React, Node) or use Next.js instead of Express for the backend
-
 ## Note to Self (Local Deployment)
 
 To deploy this project locally run:
@@ -72,3 +58,17 @@ Step 3: Start your local server
 ```bash
   yarn dev
 ```
+
+## Authors (Group Members)
+
+- [[6411271] Lynn Thit Nyi Nyi](https://github.com/LynnT-2003)
+- [[6411325] Aung Cham Myae](https://github.com/u6411325)
+- [[6410381] Tanat Arora](https://github.com/Tanat04)
+
+## Tech Stack
+
+**Client:** React, Bootstrap, Chakra-UI
+
+**Server:** MongoDB, Node, Express / Next
+
+#### Note: We plan to either use the traditional MERN techstack (MongoDB, Express, React, Node) or use Next.js instead of Express for the backend
