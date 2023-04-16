@@ -21,7 +21,7 @@ export default function admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/tutors")
+      .get("http://localhost:3000/api/tutorPlus/tutors")
       .then((response) => {
         setTutorDB(response.data);
         console.log(tutorDB);

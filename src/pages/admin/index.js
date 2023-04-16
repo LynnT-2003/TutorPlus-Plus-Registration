@@ -22,7 +22,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/admins")
+      .get("http://localhost:3000/api/tutorPlus/admins")
       .then((response) => {
         setAdminDb(response.data);
         console.log(adminDb);
@@ -43,7 +43,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/tutors")
+      .get("http://localhost:3000/api/tutorPlus/tutors")
       .then((response) => {
         setTutors(response.data);
       })
@@ -61,7 +61,7 @@ export default function Admin() {
       // Get the sessions and student sessions for the tutor
       // Fetch all sessions
       const responseAllSessions = await axios.get(
-        "https://tutor-plus.vercel.app/api/tutorPlus/sessions"
+        "http://localhost:3000/api/tutorPlus/sessions"
       );
       const allSessions = responseAllSessions.data;
 
@@ -73,7 +73,7 @@ export default function Admin() {
 
       // Fetch all student sessions
       const responseAllStudentSessions = await axios.get(
-        "https://tutor-plus.vercel.app/api/tutorPlus/studentsessions"
+        "http://localhost:3000/api/tutorPlus/studentsessions"
       );
       const allStudentSessions = responseAllStudentSessions.data;
 
@@ -89,21 +89,19 @@ export default function Admin() {
       // Delete the student sessions
       for (const studentSession of studentSessions) {
         await axios.delete(
-          `https://tutor-plus.vercel.app/api/tutorPlus/studentsessions/${studentSession._id}`
+          `http://localhost:3000/api/tutorPlus/studentsessions/${studentSession._id}`
         );
       }
 
       // Delete the sessions
       for (const session of sessions) {
         await axios.delete(
-          `https://tutor-plus.vercel.app/api/tutorPlus/sessions/${session._id}`
+          `http://localhost:3000/api/tutorPlus/sessions/${session._id}`
         );
       }
 
       // Delete the tutor
-      await axios.delete(
-        `https://tutor-plus.vercel.app/api/tutorPlus/tutors/${id}`
-      );
+      await axios.delete(`http://localhost:3000/api/tutorPlus/tutors/${id}`);
       alert("Tutor deleted successfully");
       setTutors(tutors.filter((tutor) => tutor._id !== id));
     } catch (error) {
@@ -114,7 +112,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/students")
+      .get("http://localhost:3000/api/tutorPlus/students")
       .then((response) => {
         setStudents(response.data);
       })
@@ -127,13 +125,11 @@ export default function Admin() {
     try {
       const student = students.find((student) => student._id === id);
       const studentId = student.studentId;
-      await axios.delete(
-        `https://tutor-plus.vercel.app/api/tutorPlus/students/${id}`
-      );
+      await axios.delete(`http://localhost:3000/api/tutorPlus/students/${id}`);
       setStudents(students.filter((student) => student._id !== id));
 
       const studentSessions = await axios.get(
-        "https://tutor-plus.vercel.app/api/tutorPlus/studentsessions"
+        "http://localhost:3000/api/tutorPlus/studentsessions"
       );
 
       const studentSessionsToDelete = studentSessions.data.filter(
@@ -141,7 +137,7 @@ export default function Admin() {
       );
       for (const ss of studentSessionsToDelete) {
         await axios.delete(
-          `https://tutor-plus.vercel.app/api/tutorPlus/studentsessions/${ss._id}`
+          `http://localhost:3000/api/tutorPlus/studentsessions/${ss._id}`
         );
       }
       alert("Session deleted successfully");
@@ -154,7 +150,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/sessions")
+      .get("http://localhost:3000/api/tutorPlus/sessions")
       .then((response) => {
         setSessions(response.data);
       })
@@ -165,7 +161,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/studentsessions")
+      .get("http://localhost:3000/api/tutorPlus/studentsessions")
       .then((response) => {
         setStudentSessions(response.data);
       })

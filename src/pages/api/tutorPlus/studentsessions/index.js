@@ -15,8 +15,15 @@ export default async function handler(req, res) {
     // res.status(200).json(req.body);
     const doc = await StudentSessions.create(req.body);
     res.status(201).json(doc);
+  } else if (req.method === "DELETE") {
+    console.log("Received DELETE request");
+    console.log(req.query);
+    const { sessionId, studentId } = req.query;
+    const result = await StudentSessions.deleteOne({ sessionId, studentId });
+    console.log(result);
+    res.status(204).end();
   } else {
-    res.setHeader("Allow", ["GET", "POST"]);
+    res.setHeader("Allow", ["GET", "POST", "DELETE"]);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }

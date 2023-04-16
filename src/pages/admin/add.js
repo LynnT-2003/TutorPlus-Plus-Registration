@@ -15,7 +15,7 @@ export default function AddTutor() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://tutor-plus.vercel.app/api/tutorPlus/tutors", {
+      await axios.post("http://localhost:3000/api/tutorPlus/tutors", {
         tutorId,
         tutorName,
       });

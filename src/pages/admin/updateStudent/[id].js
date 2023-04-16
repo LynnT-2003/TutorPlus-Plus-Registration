@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_URL = "https://tutor-plus.vercel.app/api/tutorPlus/students";
+const API_URL = "http://localhost:3000/api/tutorPlus/students";
 
 async function updateStudentById(_id, studentData) {
   try {

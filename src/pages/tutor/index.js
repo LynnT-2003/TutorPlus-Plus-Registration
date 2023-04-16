@@ -20,7 +20,7 @@ export default function Tutor() {
 
   useEffect(() => {
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/tutors")
+      .get("http://localhost:3000/api/tutorPlus/tutors")
       .then((response) => {
         setTutorDB(response.data);
         console.log(tutorDB);
@@ -42,7 +42,7 @@ export default function Tutor() {
   useEffect(() => {
     // Fetch sessions from the API
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/sessions")
+      .get("http://localhost:3000/api/tutorPlus/sessions")
       .then((response) => {
         setSessions(response.data);
       })
@@ -52,7 +52,7 @@ export default function Tutor() {
 
     // Fetch student sessions from the API
     axios
-      .get("https://tutor-plus.vercel.app/api/tutorPlus/studentsessions")
+      .get("http://localhost:3000/api/tutorPlus/studentsessions")
       .then((response) => {
         // Group student sessions by session ID
         const sessionsData = response.data.reduce((acc, curr) => {
@@ -199,11 +199,11 @@ export default function Tutor() {
                       try {
                         // Delete the session
                         await axios.delete(
-                          `https://tutor-plus.vercel.app/api/tutorPlus/sessions/${session._id}`
+                          `http://localhost:3000/api/tutorPlus/sessions/${session._id}`
                         );
                         // Delete student sessions for this session
                         const studentSessions = await axios.get(
-                          "https://tutor-plus.vercel.app/api/tutorPlus/studentsessions"
+                          "http://localhost:3000/api/tutorPlus/studentsessions"
                         );
                         const studentSessionsToDelete =
                           studentSessions.data.filter(
@@ -211,7 +211,7 @@ export default function Tutor() {
                           );
                         for (const ss of studentSessionsToDelete) {
                           await axios.delete(
-                            `https://tutor-plus.vercel.app/api/tutorPlus/studentsessions/${ss._id}`
+                            `http://localhost:3000/api/tutorPlus/studentsessions/${ss._id}`
                           );
                         }
                         alert("Session deleted successfully");
