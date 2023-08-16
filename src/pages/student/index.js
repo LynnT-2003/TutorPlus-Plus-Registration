@@ -23,7 +23,7 @@ export default function Student() {
 
   useEffect(() => {
     async function fetchData() {
-      const sessionResponse = await fetch(`{API_URL}/sessions`);
+      const sessionResponse = await fetch(`${API_URL}/sessions`);
       const sessionData = await sessionResponse.json();
       setSessions(sessionData);
 
