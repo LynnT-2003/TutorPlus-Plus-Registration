@@ -38,7 +38,7 @@ export default function admin() {
 
   useEffect(() => {
     axios
-      .get(`{API_URL}/students`)
+      .get(`${API_URL}/students`)
       .then((response) => {
         setStudentDB(response.data);
         console.log(studentDB);
