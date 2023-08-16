@@ -11,7 +11,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function updateTutorById(_id, tutorData) {
   try {
-    await axios.put(`${API_URL}/tutors${_id}`, tutorData);
+    await axios.put(`${API_URL}/tutors/${_id}`, tutorData);
     console.log(`Tutor with _id ${_id} updated successfully.`);
   } catch (error) {
     console.error("Error updating tutor:", error.message);
