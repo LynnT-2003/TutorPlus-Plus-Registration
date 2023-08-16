@@ -10,6 +10,8 @@ import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import Table from "react-bootstrap/Table";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Admin() {
   const router = useRouter();
   const { adminId } = router.query;
@@ -22,7 +24,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/admins")
+      .get(`${API_URL}/admins`)
       .then((response) => {
         setAdminDb(response.data);
         console.log(adminDb);
@@ -43,7 +45,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/tutors")
+      .get(`${API_URL}/tutors`)
       .then((response) => {
         setTutors(response.data);
       })
@@ -60,9 +62,7 @@ export default function Admin() {
 
       // Get the sessions and student sessions for the tutor
       // Fetch all sessions
-      const responseAllSessions = await axios.get(
-        "http://localhost:3000/api/tutorPlus/sessions"
-      );
+      const responseAllSessions = await axios.get(`${API_URL}/sessions`);
       const allSessions = responseAllSessions.data;
 
       // Filter sessions that have the same tutorId
@@ -73,7 +73,7 @@ export default function Admin() {
 
       // Fetch all student sessions
       const responseAllStudentSessions = await axios.get(
-        "http://localhost:3000/api/tutorPlus/studentsessions"
+        `${API_URL}/studentsessions`
       );
       const allStudentSessions = responseAllStudentSessions.data;
 
@@ -88,20 +88,16 @@ export default function Admin() {
 
       // Delete the student sessions
       for (const studentSession of studentSessions) {
-        await axios.delete(
-          `http://localhost:3000/api/tutorPlus/studentsessions/${studentSession._id}`
-        );
+        await axios.delete(`${API_URL}/studentsessions/${studentSession._id}`);
       }
 
       // Delete the sessions
       for (const session of sessions) {
-        await axios.delete(
-          `http://localhost:3000/api/tutorPlus/sessions/${session._id}`
-        );
+        await axios.delete(`${API_URL}/sessions/${session._id}`);
       }
 
       // Delete the tutor
-      await axios.delete(`http://localhost:3000/api/tutorPlus/tutors/${id}`);
+      await axios.delete(`${API_URL}/tutors/${id}`);
       alert("Tutor deleted successfully");
       setTutors(tutors.filter((tutor) => tutor._id !== id));
     } catch (error) {
@@ -112,7 +108,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/students")
+      .get(`${API_URL}/students`)
       .then((response) => {
         setStudents(response.data);
       })
@@ -125,20 +121,16 @@ export default function Admin() {
     try {
       const student = students.find((student) => student._id === id);
       const studentId = student.studentId;
-      await axios.delete(`http://localhost:3000/api/tutorPlus/students/${id}`);
+      await axios.delete(`${API_URL}/students/${id}`);
       setStudents(students.filter((student) => student._id !== id));
 
-      const studentSessions = await axios.get(
-        "http://localhost:3000/api/tutorPlus/studentsessions"
-      );
+      const studentSessions = await axios.get(`${API_URL}/studentsessions`);
 
       const studentSessionsToDelete = studentSessions.data.filter(
         (ss) => ss.studentId === studentId
       );
       for (const ss of studentSessionsToDelete) {
-        await axios.delete(
-          `http://localhost:3000/api/tutorPlus/studentsessions/${ss._id}`
-        );
+        await axios.delete(`${API_URL}/studentsessions/${ss._id}`);
       }
       alert("Session deleted successfully");
       window.location.reload(false);
@@ -150,7 +142,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/sessions")
+      .get(`${API_URL}/sessions`)
       .then((response) => {
         setSessions(response.data);
       })
@@ -161,7 +153,7 @@ export default function Admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/studentsessions")
+      .get(`${API_URL}/studentsessions`)
       .then((response) => {
         setStudentSessions(response.data);
       })

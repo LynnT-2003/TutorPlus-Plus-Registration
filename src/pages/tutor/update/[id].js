@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "next/legacy/image";
 
-const API_URL = "http://localhost:3000/api/tutorPlus/sessions";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function updateSessionTimeById(_id, newSessionTime) {
   try {
@@ -24,7 +24,7 @@ async function updateSessionTimeById(_id, newSessionTime) {
 
     const updatedSession = { ...session, sessionTime: newSessionTime };
 
-    await axios.put(`${API_URL}/${_id}`, updatedSession);
+    await axios.put(`${API_URL}/sessions/${_id}`, updatedSession);
     console.log(`Session with _id ${_id} updated successfully.`);
   } catch (error) {
     console.error("Error updating session:", error.message);

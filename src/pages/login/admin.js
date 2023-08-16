@@ -9,6 +9,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Form, Button } from "react-bootstrap";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function admin() {
   const [adminDb, setAdminDb] = useState([]);
   const [currentAdminID, setCurrentAdminID] = useState([]);
@@ -56,11 +58,10 @@ export default function admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/admins")
+      .get(`${API_URL}/admins`)
       .then((response) => {
         setAdminDb(response.data);
         console.log(adminDb);
-        // alert("Successfully fetched Admin data");
       })
       .catch((error) => {
         console.log(error);

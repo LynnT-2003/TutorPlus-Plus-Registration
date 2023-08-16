@@ -10,6 +10,8 @@ import Navbar from "react-bootstrap/Navbar";
 import { Form, Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Tutor() {
   const router = useRouter();
   const { tutorId } = router.query;
@@ -20,7 +22,7 @@ export default function Tutor() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/tutors")
+      .get(`${API_URL}/tutors`)
       .then((response) => {
         setTutorDB(response.data);
         console.log(tutorDB);
@@ -42,7 +44,7 @@ export default function Tutor() {
   useEffect(() => {
     // Fetch sessions from the API
     axios
-      .get("http://localhost:3000/api/tutorPlus/sessions")
+      .get(`${API_URL}/sessions`)
       .then((response) => {
         setSessions(response.data);
       })
@@ -52,7 +54,7 @@ export default function Tutor() {
 
     // Fetch student sessions from the API
     axios
-      .get("http://localhost:3000/api/tutorPlus/studentsessions")
+      .get(`${API_URL}/studentsessions`)
       .then((response) => {
         // Group student sessions by session ID
         const sessionsData = response.data.reduce((acc, curr) => {
@@ -199,11 +201,11 @@ export default function Tutor() {
                       try {
                         // Delete the session
                         await axios.delete(
-                          `https://tutor-plus.vercel.app/api/tutorPlus/sessions/${session._id}`
+                          `${API_URL}/sessions/${session._id}`
                         );
                         // Delete student sessions for this session
                         const studentSessions = await axios.get(
-                          "https://tutor-plus.vercel.app/api/tutorPlus/studentsessions"
+                          `${API_URL}/tutorPlus/studentsessions`
                         );
                         const studentSessionsToDelete =
                           studentSessions.data.filter(
@@ -211,7 +213,7 @@ export default function Tutor() {
                           );
                         for (const ss of studentSessionsToDelete) {
                           await axios.delete(
-                            `https://tutor-plus.vercel.app/api/tutorPlus/studentsessions/${ss._id}`
+                            `${API_URL}/tutorPlus/studentsessions/${ss._id}`
                           );
                         }
                         alert("Session deleted successfully");

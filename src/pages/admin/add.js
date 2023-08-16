@@ -7,6 +7,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Form, Button } from "react-bootstrap";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function AddTutor() {
   const router = useRouter();
   const [tutorId, setTutorId] = useState("");
@@ -15,7 +17,7 @@ export default function AddTutor() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/tutorPlus/tutors", {
+      await axios.post(`${API_URL}/tutors`, {
         tutorId,
         tutorName,
       });

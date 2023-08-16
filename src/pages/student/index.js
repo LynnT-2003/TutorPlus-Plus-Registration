@@ -9,6 +9,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Student() {
   const [sessions, setSessions] = useState([]);
   const [tutors, setTutors] = useState([]);
@@ -21,15 +23,11 @@ export default function Student() {
 
   useEffect(() => {
     async function fetchData() {
-      const sessionResponse = await fetch(
-        "http://localhost:3000/api/tutorPlus/sessions"
-      );
+      const sessionResponse = await fetch(`{API_URL}/sessions`);
       const sessionData = await sessionResponse.json();
       setSessions(sessionData);
 
-      const tutorResponse = await fetch(
-        "http://localhost:3000/api/tutorPlus/tutors"
-      );
+      const tutorResponse = await fetch(`${API_URL}/tutors`);
       const tutorData = await tutorResponse.json();
       setTutors(tutorData);
 
@@ -50,7 +48,7 @@ export default function Student() {
 
       async function fetchRegisteredCourses() {
         const registeredCoursesResponse = await fetch(
-          `http://localhost:3000/api/tutorPlus/studentsessions`
+          `${API_URL}/studentsessions`
         );
         const registeredCoursesData = await registeredCoursesResponse.json();
         const filteredCourses = registeredCoursesData.filter(
@@ -66,19 +64,19 @@ export default function Student() {
   // useEffect(() => {
   //   async function fetchData() {
   //     const sessionResponse = await fetch(
-  //       "http://localhost:3000/api/tutorPlus/sessions"
+  //       "${API_URL}/sessions"
   //     );
   //     const sessionData = await sessionResponse.json();
   //     setSessions(sessionData);
 
   //     const tutorResponse = await fetch(
-  //       "http://localhost:3000/api/tutorPlus/tutors"
+  //       "${API_URL}/tutors"
   //     );
   //     const tutorData = await tutorResponse.json();
   //     setTutors(tutorData);
 
   //     const registeredCoursesResponse = await fetch(
-  //       `http://localhost:3000/api/tutorPlus/studentsessions`
+  //       `${API_URL}/studentsessions`
   //     );
   //     const registeredCoursesData = await registeredCoursesResponse.json();
   //     const filteredCourses = registeredCoursesData.filter(
@@ -124,9 +122,7 @@ export default function Student() {
 
   const fetchStudentDetails = async (id) => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/tutorPlus/students/${id}`
-      );
+      const response = await axios.get(`${API_URL}/students/${id}`);
       console.log("response", response.data);
       setStudent(response.data);
     } catch (error) {
@@ -163,13 +159,10 @@ export default function Student() {
     console.log("sessionId", sessionId);
     try {
       console.log("Sending POST request to API endpoint");
-      const response = await axios.post(
-        "http://localhost:3000/api/tutorPlus/studentsessions",
-        {
-          studentId: student.studentId,
-          sessionId,
-        }
-      );
+      const response = await axios.post(`${API_URL}/studentsessions`, {
+        studentId: student.studentId,
+        sessionId,
+      });
       console.log("Successfully registered:", response.data);
       alert("Successfully Enrolled");
     } catch (error) {
@@ -180,7 +173,7 @@ export default function Student() {
   // function handleUnregister(sessionId, studentId) {
   //   // First, make a GET request to the API to retrieve the _id of the document to be deleted
   //   axios
-  //     .get("http://localhost:3000/api/tutorPlus/studentsessions", {
+  //     .get("${API_URL}/studentsessions", {
   //       params: {
   //         sessionId: sessionId,
   //         studentId: studentId,
@@ -194,7 +187,7 @@ export default function Student() {
   //       // Then, make a DELETE request to the API using the _id of the document to be deleted
   //       axios
   //         .delete(
-  //           `http://localhost:3000/api/tutorPlus/studentsessions/${documentId}`
+  //           `${API_URL}/studentsessions/${documentId}`
   //         )
   //         .then((response) => {
   //           console.log(
@@ -220,7 +213,7 @@ export default function Student() {
   function handleUnregister(sessionId, studentId) {
     // Make a DELETE request to the API to delete the document where sessionId and studentId match
     axios
-      .delete("http://localhost:3000/api/tutorPlus/studentsessions", {
+      .delete(`${API_URL}/studentsessions`, {
         params: {
           sessionId: sessionId,
           studentId: studentId,

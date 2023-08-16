@@ -7,11 +7,11 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_URL = "http://localhost:3000/api/tutorPlus/tutors";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function updateTutorById(_id, tutorData) {
   try {
-    await axios.put(`${API_URL}/${_id}`, tutorData);
+    await axios.put(`${API_URL}/tutors${_id}`, tutorData);
     console.log(`Tutor with _id ${_id} updated successfully.`);
   } catch (error) {
     console.error("Error updating tutor:", error.message);

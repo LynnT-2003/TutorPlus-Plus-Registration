@@ -9,6 +9,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Form, Button } from "react-bootstrap";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export default function admin() {
   const [studentDB, setStudentDB] = useState([]);
   const [currentStudentID, setCurrentStudentID] = useState([]);
@@ -36,7 +38,7 @@ export default function admin() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/tutorPlus/students")
+      .get(`{API_URL}/students`)
       .then((response) => {
         setStudentDB(response.data);
         console.log(studentDB);
