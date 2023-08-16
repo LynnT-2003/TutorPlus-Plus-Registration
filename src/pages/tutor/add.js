@@ -9,6 +9,8 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 
+const API_URL = "http://localhost:3000/api/tutorPlus/sessions";
+
 export default function AddSessionForm() {
   const router = useRouter();
   const { tutorId } = router.query;
@@ -21,7 +23,7 @@ export default function AddSessionForm() {
 
     // Make an API request to add the new session
     try {
-      const response = await axios.post("/api/tutorPlus/sessions", {
+      const response = await axios.post(`${API_URL}`, {
         sessionId,
         sessionTime,
         tutorId,

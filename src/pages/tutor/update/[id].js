@@ -8,7 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "next/legacy/image";
 
-const API_URL = "https://tutor-plus.vercel.app/api/tutorPlus/sessions";
+const API_URL = "http://localhost:3000/api/tutorPlus/sessions";
 
 async function updateSessionTimeById(_id, newSessionTime) {
   try {
@@ -77,7 +77,18 @@ export default function UpdateSession() {
   };
 
   if (!session) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <div className="loading"></div>
+      </div>
+    );
   }
 
   const goHome = () => {
