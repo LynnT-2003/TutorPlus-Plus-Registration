@@ -27,7 +27,7 @@ export default function UpdateTutor() {
     async function fetchTutor() {
       if (!id) return;
       try {
-        const response = await axios.get(`${API_URL}/${id}`);
+        const response = await axios.get(`${API_URL}/tutors/${id}`);
         setTutor(response.data);
       } catch (error) {
         console.error("Error fetching tutor:", error.message);
