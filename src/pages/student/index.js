@@ -131,21 +131,18 @@ export default function Student() {
   };
 
   if (!student) {
-    // return <div>Loading...</div>;
-    if (!session) {
-      return (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "100vh",
-          }}
-        >
-          <img src="/loading.gif" alt="Loading..." />
-        </div>
-      );
-    }
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <img src="/loading.gif" alt="Loading..." />
+      </div>
+    );
   }
 
   const cardStyle = {
