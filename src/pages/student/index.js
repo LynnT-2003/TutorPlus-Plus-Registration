@@ -131,7 +131,19 @@ export default function Student() {
   };
 
   if (!student) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <div className="loading"></div>
+      </div>
+    );
   }
 
   const cardStyle = {
