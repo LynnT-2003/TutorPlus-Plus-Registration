@@ -23,7 +23,7 @@ export default function admin() {
 
   useEffect(() => {
     axios
-      .get(`{API_URL}/tutors`)
+      .get(`${API_URL}/tutors`)
       .then((response) => {
         setTutorDB(response.data);
         console.log(tutorDB);
