@@ -3,8 +3,8 @@ import Image from "next/legacy/image";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+
+import MyNavbar from "./myNavbar";
 
 export default function Login() {
   const router = useRouter();
@@ -19,10 +19,6 @@ export default function Login() {
 
   const studentLogin = () => {
     router.push("/login/student");
-  };
-
-  const goHome = () => {
-    router.push("/");
   };
 
   const goAdmin = () => {
@@ -56,40 +52,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="BGandDiv">
-        <Navbar bg="light" variant="light">
-          <Container>
-            <Nav.Link
-              onClick={goHome}
-              style={{ fontSize: "20px", paddingRight: "20px" }}
-            >
-              TutorPlus
-            </Nav.Link>
-            {/* <Navbar.Brand onClick={goHome}>TutorPlus</Navbar.Brand> */}
-            <Nav className="me-auto">
-              {/* <Nav.Link onClick={goAdmin}>Admin</Nav.Link>
-              <Nav.Link onClick={goTutor}>Tutor</Nav.Link>
-              <Nav.Link onClick={goStudent}>Student</Nav.Link> */}
-            </Nav>
-          </Container>
-        </Navbar>
-        <div
-          style={{
-            zIndex: -1,
-            position: "fixed",
-            width: "100vw",
-            height: "100vh",
-          }}
-        >
-          {/* <Image
-            src="/images/background.jpg"
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-        
-          /> */}
-        </div>
-      </div>
+      <MyNavbar />
 
       <Container style={landingText}>Welcome to TutorPlus</Container>
 
