@@ -94,14 +94,14 @@ export default function Login() {
       <Container style={landingText}>Welcome to TutorPlus</Container>
 
       <Container style={homeText}>
-        "Streamline your tutoring experience with VMS Tutoring."
+        "Streamline your studying experience TutorPlus."
       </Container>
 
       <Container style={{ marginTop: "10rem" }}>
         <Button
           variant="outline-secondary"
           size="lg"
-          style={{ margin: "20px" }}
+          style={{ marginRight: "20px" }}
           onClick={adminLogin}
         >
           Login as Admin
