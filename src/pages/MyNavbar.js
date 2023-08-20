@@ -23,10 +23,11 @@ const MyNavbar = () => {
           <Container>
             <Nav.Link
               onClick={goHome}
-              style={{ fontSize: "20px", paddingRight: "20px" }}
+              style={{ fontSize: "20px", padding: "10px 20px" }}
             >
               TutorPlus
             </Nav.Link>
+
             <Nav className="me-auto">
               <Nav.Link onClick={goAboutUs}>About Us</Nav.Link>
             </Nav>

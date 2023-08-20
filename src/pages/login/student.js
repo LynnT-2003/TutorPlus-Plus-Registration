@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Image from "next/legacy/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Form, Button } from "react-bootstrap";
@@ -16,8 +14,9 @@ export default function admin() {
   const [password, setPassword] = useState("");
   const [isLoggedInStudent, setIsLoggedInStudent] = useState("");
   const router = useRouter();
+
   const cardStyle = {
-    width: "20vw",
+    width: "23vw",
     backgroundColor: "white",
     color: "black",
     borderRadius: "10px",
@@ -25,13 +24,15 @@ export default function admin() {
     margin: "5vw auto",
     textAlign: "center",
     padding: "3vw",
+    overflow: "hidden",
   };
+
   const cardText = {
     fontSize: "2.5rem",
     fontWeight: "300",
     lineHeight: "1.2",
     color: "#333",
-    marginBottom: "2rem",
+    marginBottom: "1rem",
   };
 
   useEffect(() => {

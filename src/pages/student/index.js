@@ -61,38 +61,6 @@ export default function Student() {
     }
   }, [student, sessions]);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const sessionResponse = await fetch(
-  //       "${API_URL}/sessions"
-  //     );
-  //     const sessionData = await sessionResponse.json();
-  //     setSessions(sessionData);
-
-  //     const tutorResponse = await fetch(
-  //       "${API_URL}/tutors"
-  //     );
-  //     const tutorData = await tutorResponse.json();
-  //     setTutors(tutorData);
-
-  //     const registeredCoursesResponse = await fetch(
-  //       `${API_URL}/studentsessions`
-  //     );
-  //     const registeredCoursesData = await registeredCoursesResponse.json();
-  //     const filteredCourses = registeredCoursesData.filter(
-  //       (course) => course.studentId === student.studentId
-  //     );
-  //     setRegisteredCourses(filteredCourses);
-  //     console.log("Student ID", { studentId });
-  //     console.log("Filtered Courses ", { filteredCourses });
-  //     console.log("Registered sessions", { registeredCourses });
-  //   }
-  //   console.log("Fetching Student details...");
-  //   fetchStudentDetails(studentId);
-  //   console.log("Student details fetched");
-  //   console.log("student", student);
-  //   fetchData();
-  // }, []);
   const goHome = () => {
     router.push("/");
   };
@@ -108,17 +76,6 @@ export default function Student() {
   const goStudent = () => {
     router.push("/login/student");
   };
-
-  // useEffect(() => {
-  //   if (studentId) {
-  //     // Only fetch student details when studentId is available
-  //     console.log("Student: " + studentId);
-  //     console.log("Fetching Student details...");
-  //     fetchStudentDetails(studentId);
-  //     console.log("Student details fetched");
-  //     console.log("student", student);
-  //   }
-  // }, [studentId]);
 
   const fetchStudentDetails = async (id) => {
     try {
@@ -181,46 +138,6 @@ export default function Student() {
     }
   };
 
-  // function handleUnregister(sessionId, studentId) {
-  //   // First, make a GET request to the API to retrieve the _id of the document to be deleted
-  //   axios
-  //     .get("${API_URL}/studentsessions", {
-  //       params: {
-  //         sessionId: sessionId,
-  //         studentId: studentId,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       const documents = response.data;
-  //       // Assume that there is only one document matching the sessionId and studentId
-  //       const documentId = documents[0]._id;
-
-  //       // Then, make a DELETE request to the API using the _id of the document to be deleted
-  //       axios
-  //         .delete(
-  //           `${API_URL}/studentsessions/${documentId}`
-  //         )
-  //         .then((response) => {
-  //           console.log(
-  //             `Successfully unregistered student ${studentId} from session ${sessionId}.`
-  //           );
-  //           // Here you can update your component's state or do other necessary actions
-  //         })
-  //         .catch((error) => {
-  //           console.error(
-  //             `Failed to unregister student ${studentId} from session ${sessionId}. Error:`,
-  //             error
-  //           );
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         `Failed to retrieve document to delete for session ${sessionId} and student ${studentId}. Error:`,
-  //         error
-  //       );
-  //     });
-  // }
-
   function handleUnregister(sessionId, studentId) {
     // Make a DELETE request to the API to delete the document where sessionId and studentId match
     axios
@@ -245,7 +162,7 @@ export default function Student() {
   }
 
   return (
-    <>
+    <div>
       <div style={cardStyle}>
         <Container style={cardText}>Welcome {student.studentName}</Container>
 
@@ -343,6 +260,6 @@ export default function Student() {
           </Table>
         </div>
       </div>
-    </>
+    </div>
   );
 }

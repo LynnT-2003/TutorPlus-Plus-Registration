@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import Image from "next/legacy/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { Form, Button } from "react-bootstrap";
@@ -20,7 +18,7 @@ export default function admin() {
   const router = useRouter();
 
   const cardStyle = {
-    width: "20vw",
+    width: "23vw",
     backgroundColor: "white",
     color: "black",
     borderRadius: "10px",
@@ -93,7 +91,7 @@ export default function admin() {
         <br />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="username">
-            <Form.Label>Admin ID</Form.Label>
+            <Form.Label style={{ textAlign: "left" }}>Admin ID</Form.Label>
             <Form.Control
               type="text"
               value={username}
