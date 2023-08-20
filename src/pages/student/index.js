@@ -246,17 +246,6 @@ export default function Student() {
 
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand onClick={goHome}>TutorPlus</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link onClick={goAdmin}>Admin</Nav.Link>
-            <Nav.Link onClick={goTutor}>Tutor</Nav.Link>
-            <Nav.Link onClick={goStudent}>Student</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
       <div style={cardStyle}>
         <Container style={cardText}>Welcome {student.studentName}</Container>
 

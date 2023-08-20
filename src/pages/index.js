@@ -4,8 +4,6 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 
-import MyNavbar from "./MyNavbar";
-
 export default function Login() {
   const router = useRouter();
 
@@ -52,8 +50,6 @@ export default function Login() {
 
   return (
     <>
-      <MyNavbar />
-
       <Container style={landingText}>Welcome to TutorPlus</Container>
 
       <Container style={homeText}>

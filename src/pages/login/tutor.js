@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 import Image from "next/legacy/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { Form, Button } from "react-bootstrap";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -89,17 +87,6 @@ export default function admin() {
 
   return (
     <>
-      <Navbar bg="light" variant="light">
-        <Container>
-          <Navbar.Brand onClick={goHome}>TutorPlus</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link onClick={goAdmin}>Admin</Nav.Link>
-            <Nav.Link onClick={goTutor}>Tutor</Nav.Link>
-            <Nav.Link onClick={goStudent}>Student</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
       <div style={cardStyle}>
         <Container style={cardText}>Tutor Login</Container>
         <br />
