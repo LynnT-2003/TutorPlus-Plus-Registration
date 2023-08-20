@@ -53,14 +53,14 @@ export default function Login() {
       <Container style={landingText}>Welcome to TutorPlus</Container>
 
       <Container style={homeText}>
-        "Streamline your studying experience TutorPlus."
+        "Streamline your studying experience with TutorPlus."
       </Container>
 
       <Container style={{ marginTop: "10rem" }}>
         <Button
           variant="outline-secondary"
           size="lg"
-          style={{ marginRight: "20px" }}
+          style={{ marginRight: "40px" }}
           onClick={adminLogin}
         >
           Login as Admin
@@ -68,7 +68,7 @@ export default function Login() {
         <Button
           variant="outline-secondary"
           size="lg"
-          style={{ margin: "20px" }}
+          style={{ marginRight: "40px" }}
           onClick={tutorLogin}
         >
           Login as Tutor
@@ -76,7 +76,7 @@ export default function Login() {
         <Button
           variant="outline-secondary"
           size="lg"
-          style={{ margin: "20px" }}
+          style={{ marginRight: "40px" }}
           onClick={studentLogin}
         >
           Login as Student
