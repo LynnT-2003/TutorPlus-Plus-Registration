@@ -18,7 +18,7 @@ export default function admin() {
   const router = useRouter();
 
   const cardStyle = {
-    width: "23vw",
+    width: "21vw",
     backgroundColor: "white",
     color: "black",
     borderRadius: "10px",
@@ -87,26 +87,34 @@ export default function admin() {
   return (
     <>
       <div style={cardStyle}>
-        <Container style={cardText}>Admin Login</Container>
+        <Container style={cardText}>Login</Container>
         <br />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="username">
-            <Form.Label style={{ textAlign: "left" }}>Admin ID</Form.Label>
+            <Form.Label
+              style={{ textAlign: "left", width: "100%", paddingLeft: "5px" }}
+            >
+              Admin ID:
+            </Form.Label>
             <Form.Control
               type="text"
               value={username}
-              placeholder="a01"
+              placeholder="Enter your ID"
               onChange={(event) => setUsername(event.target.value)}
             />
 
             <br />
           </Form.Group>
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label
+              style={{ textAlign: "left", width: "100%", paddingLeft: "5px" }}
+            >
+              Password:
+            </Form.Label>
             <Form.Control
               type="password"
               value={password}
-              placeholder="password"
+              placeholder="Enter your password"
               onChange={(event) => setPassword(event.target.value)}
             />
           </Form.Group>

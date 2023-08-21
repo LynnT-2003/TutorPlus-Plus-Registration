@@ -16,7 +16,7 @@ export default function admin() {
   const router = useRouter();
 
   const cardStyle = {
-    width: "23vw",
+    width: "21vw",
     backgroundColor: "white",
     color: "black",
     borderRadius: "10px",
@@ -24,7 +24,6 @@ export default function admin() {
     margin: "5vw auto",
     textAlign: "center",
     padding: "3vw",
-    overflow: "hidden",
   };
 
   const cardText = {
@@ -79,7 +78,7 @@ export default function admin() {
   return (
     <>
       <div style={cardStyle}>
-        <Container style={cardText}>Student Login</Container>
+        <Container style={cardText}>Login</Container>
         <br />
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="username">
@@ -87,7 +86,7 @@ export default function admin() {
             <Form.Control
               type="text"
               value={username}
-              placeholder="s01"
+              placeholder="Enter your ID"
               onChange={(event) => setUsername(event.target.value)}
             />
             <br />
@@ -95,7 +94,7 @@ export default function admin() {
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
+              type="Enter your password"
               value={password}
               placeholder="password"
               onChange={(event) => setPassword(event.target.value)}
