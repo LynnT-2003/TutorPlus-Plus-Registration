@@ -13,7 +13,7 @@ const MyNavbar = () => {
   };
 
   const goAboutUs = () => {
-    router.push("/aboutus");
+    router.push("/Aboutus");
   };
 
   return (
